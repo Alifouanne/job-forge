@@ -43,7 +43,7 @@ const getClient = (session: boolean) => {
     // Higher rate limits for authenticated users
     return aj.withRule(
       tokenBucket({
-        mode: "DRY_RUN",
+        mode: "LIVE",
         capacity: 100,
         interval: 60,
         refillRate: 30, // 30 requests per minute
@@ -53,7 +53,7 @@ const getClient = (session: boolean) => {
     // Lower rate limits for anonymous users
     return aj.withRule(
       tokenBucket({
-        mode: "DRY_RUN",
+        mode: "LIVE",
         capacity: 100,
         interval: 60,
         refillRate: 10, // 10 requests per minute
