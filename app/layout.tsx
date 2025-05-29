@@ -3,22 +3,17 @@ import type React from "react";
 // This component wraps all pages and provides global styling, fonts, and providers
 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/general/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 
 // Configure the primary sans-serif font (Geist) with CSS variable for global usage
-const geistSans = Geist({
-  variable: "--font-geist-sans", // CSS custom property for the font
-  subsets: ["latin"], // Only load Latin character subset for performance
-});
-
-// Configure the monospace font (Geist Mono) for code blocks and technical text
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono", // CSS custom property for the monospace font
-  subsets: ["latin"], // Only load Latin character subset for performance
+const poppins = Poppins({
+  variable: "--font-sans", // CSS custom property for the font
+  subsets: ["latin"], // Only load Latin character subset for performance,
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 // SEO metadata configuration for the application
@@ -40,9 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${poppins.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
